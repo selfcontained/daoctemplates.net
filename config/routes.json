@@ -1,0 +1,28 @@
+{
+	"/^\\/$/" : {
+		"type": "Controller",
+		"args": [
+			"Controller\\Home",
+			"index"
+		]
+	},
+	"/^\\/direct-view\\/$/" : {
+		"type": "View",
+		"args" : [
+			"home/direct-view.twig"
+		]
+	},
+	"/^\\/cached\\/$/" : {
+		"type": "View",
+		"args" : [
+			"home/cached.twig"
+		],
+		"attributes" : {
+			"responseCache" : true,
+			"responseCacheTTL" : 10
+		}
+	},
+	"/^\\/css\\/combined\\.(?<bundle>[a-z]+)\\.css$/" : {
+		"type": "Less"
+	}
+}

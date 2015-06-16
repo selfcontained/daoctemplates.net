@@ -1,0 +1,60 @@
+<div class="pagination">
+
+	{# Alias some shtuff #}
+	{% set page = results.page %}
+	{% set totalPages = results.totalPages %}
+	{% set currentStart = results.currentStart %}
+	{% set currentEnd = results.currentEnd %}
+	{% set total = results.total %}
+	<ul>
+		<li class="{{ page == 1 ? 'disabled' : '' }}"><a href="?page=1{{query }}" >First</a></li>
+		<li class="{{ page == 1 ? 'disabled' : '' }}"><a href="?page={{ page-1 }}{{query }}" >«</a></li>
+		{% for i in range(3, 1) %}
+			{% if page - i > 0 %}
+				<li><a href="?page={{ page-i }}{{query }}" class="active">{{ page-i }}</a></li>
+			{% endif %}
+		{% endfor %}
+		<li class="active"><span>{{ page }}</span></li>
+		{% for i in range(1, 3) %}
+			{% if page + i <= totalPages %}
+				<li><a href="?page={{ page+i }}{{query }}">{{ page+i }}</a></li>
+			{% endif %}
+		{% endfor %}
+		<li class="{{ page == totalPages ? 'disabled' : '' }}"><a href="?page={{ page+1 }}{{query }}" >»</a></li>
+		<li class="{{ page == totalPages ? 'disabled' : '' }}"><a href="?page={{ totalPages }}{{query }}">Last</a></li>
+	</ul>
+
+	<p class="pull-right muted">Showing {{ currentStart }} - {{ currentEnd }} of {{ total }}</p>
+	
+</div>
+
+<table class="table table-hover table-bordered template-list">
+	<thead>
+		<tr>
+			<th></th>
+			<th>User</th>
+			<th>Class</th>
+			<th>Level</th>
+			<th>Server</th>
+			<th>Date</th>
+			<th>Description</th>
+		</tr>
+	</thead>
+	<tbody>
+		{% for t in results.data %}
+			<tr class="{{ t.realmName|lower }}">
+				<td nowrap >
+					<a class="btn btn-small" href="/template/{{ t.id }}"><i class="icon-zoom-in"></i></a>
+					{% if t.canEdit %}<a class="btn btn-small" href="/template/edit/{{ t.id }}"><i class="icon-pencil"></i></a>{% endif %}
+				</td>
+				<td><a href="/user/{{ t.userId }}">{{ t.userName }}</a></td>
+				<td><a href="/class/{{ t.className|lower }}">{{ t.className }}</a></td>
+				<td>{{ t.level }}</td>
+				<td>{{ t.serverName }}</td>
+				<td>{{ t.created|date('m/d/Y') }}</td>
+				<td title="{{ t.description }}">{{ t.description|slice(0,65) }}...</td>
+			</tr>
+		{% endfor %}
+
+	</tbody>
+</table>

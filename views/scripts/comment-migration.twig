@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0"
+  xmlns:content="http://purl.org/rss/1.0/modules/content/"
+  xmlns:dsq="http://www.disqus.com/"
+  xmlns:dc="http://purl.org/dc/elements/1.1/"
+  xmlns:wp="http://wordpress.org/export/1.0/"
+>
+  <channel>
+    {% for t in templates %}
+    <item>
+      <title>{{ t.className }} Template by {{ t.userName }} ({{ t.id }})</title>
+      <link>http://daoctemplates.net/template/{{ t.id }}</link>
+      <content:encoded><![CDATA[{{ t.description }}]]></content:encoded>
+      <dsq:thread_identifier>/template/{{ t.id }}</dsq:thread_identifier>
+      <wp:post_date_gmt>{{ t.created|date('Y-m-d H:i:s') }}</wp:post_date_gmt>
+      <wp:comment_status>open</wp:comment_status>
+      {% for c in t.comments %}
+      <wp:comment>
+        <wp:comment_id>{{ c.CommentID }}</wp:comment_id>
+        <wp:comment_author>{{ c.UserName ? c.UserName : c.CommentName }}</wp:comment_author>
+        <wp:comment_author_email>{{ c.Email }}</wp:comment_author_email>
+        <wp:comment_author_IP></wp:comment_author_IP>
+        <wp:comment_date_gmt>{{ c.CommentTime|date('Y-m-d H:i:s') }}</wp:comment_date_gmt>
+        <wp:comment_content><![CDATA[{% autoescape false %}{{ c.CommentText }}{% endautoescape %}]]></wp:comment_content>
+        <wp:comment_approved>1</wp:comment_approved>
+        <wp:comment_parent>0</wp:comment_parent>
+      </wp:comment>
+      {% endfor %}
+    </item>
+    {% endfor %}
+  </channel>
+</rss>

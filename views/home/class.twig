@@ -1,0 +1,13 @@
+{% extends '_layouts/main.twig' %}
+
+{% block title %}{{ class|capitalize }} Templates{% endblock %}
+
+{% block main %}
+
+	<h3>{{ class|capitalize }} Templates</h3>
+
+	{% include 'home/_server-types.twig' with { 'serverType': serverType, 'prefix' : '/class/'~class~'/' } only %}	
+
+	{% include 'home/_template-list.twig' with { 'results': templates } only %}
+
+{% endblock %}

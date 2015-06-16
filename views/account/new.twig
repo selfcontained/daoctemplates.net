@@ -1,0 +1,35 @@
+{% extends '_layouts/main.twig' %}
+
+{% block title %}Create a new Account{% endblock %}
+
+{% block main %}
+
+	<h3>Create a new Account</h3>
+
+	<form action="/account/create" method="POST">
+
+		<div class="input-prepend">
+			<span class="add-on" style="width:125px;">Username</span>
+			<input style="width:150px;" type="text" name="name" placeholder="Username" value="{{ user.name }}" >
+		</div>
+
+		<hr>
+		
+		<div class="input-prepend">
+			<span class="add-on" style="width:125px;">Password</span>
+			<input style="width:150px;" type="password" name="password" placeholder="Password" >
+		</div>
+
+		<div class="input-prepend">
+			<span class="add-on" style="width:125px;">Verify Password</span>
+			<input style="width:150px;" type="password" name="verifyPassword" placeholder="Verify Password"  >
+		</div>
+
+		<hr>
+		
+		<button type="submit" class="btn btn-primary">Sign Up</button>
+		<a href="/" class="btn">Cancel</a>
+
+	</form>
+
+{% endblock %}

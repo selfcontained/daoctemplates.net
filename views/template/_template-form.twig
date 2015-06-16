@@ -1,0 +1,47 @@
+<form action="/template/save" method="POST" class="form-horizontal">
+	<input type="hidden" name="templateId" value="{{ template.id }}" >
+	
+	<select name="class" id="class" class="span3">
+		<option value="">Select Class</option>
+		{% for id,name in classes %}
+			<option value="{{ id }}" {% if template.classId == id %}selected{% endif %} >{{ name }}</option>
+		{% endfor %}
+	</select>
+
+	<select name="serverType" id="serverType" class="span3">
+		<option value="">Select Server</option>
+		{% for id,name in serverTypes %}
+			<option value="{{ id }}" {% if template.serverTypeId == id %}selected{% endif %} >{{ name }}</option>
+		{% endfor %}
+	</select>
+
+	<select name="level" class="span3">
+		<option value="">Select Level</option>
+		{% for level in range(50,1) %}
+			<option value="{{ level }}" {% if template.level == level %}selected{% endif %} >{{ level }}</option>
+		{% endfor %}
+	</select>
+
+	<hr>
+
+	<h4 class="muted">Please enter a brief description</h4>
+
+	<textarea name="description" placeholder="Description" class="span12" rows="3">{{ template.description }}</textarea>
+
+	<hr>
+
+	<h4 class="muted">Paste your build report below</h4>
+
+	<textarea name="text" placeholder="Build Report" class="span12" rows="10">{{ template.text }}</textarea>
+
+	{% if template.id is null %}
+		<script type="text/javascript">var RecaptchaOptions = { theme : 'white' };</script>
+		{% autoescape false %}{{ captcha }}{% endautoescape %}
+	{% endif %}
+	
+	<hr>
+
+	<button type="submit" class="btn btn-primary">Save</button>
+	<a href="/{% if template.id %}template/{{ template.id }}{% endif %}" class="btn">Cancel</a>
+
+</form>

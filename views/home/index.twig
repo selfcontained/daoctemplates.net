@@ -1,0 +1,15 @@
+{% extends '_layouts/main.twig' %}
+
+{% block title %}DAoC Template Database{% endblock %}
+
+{% block main %}
+
+	{% include 'home/_server-types.twig' with { 'serverType': serverType, 'prefix' : '/' } only %}	
+
+	{% if templates.data is empty and query is not null %}
+		<p class="lead">We couldn't find anything matching your query.  It may have not have been specific enough.</p>
+	{% else %}
+		{% include 'home/_template-list.twig' with { 'results': templates, 'query': query?'&query='~query:'' } only %}
+	{% endif %}
+
+{% endblock %}

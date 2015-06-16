@@ -1,0 +1,34 @@
+{% extends '_layouts/main.twig' %}
+
+{% block title %}About{% endblock %}
+
+{% block main %}
+
+	<h1>About</h1>
+
+	<p>
+		I originally created <a href="http://daoctemplates.net">daoctemplates.net</a> in 2006 when I actively played the game, and there just weren't any central places to browse and share templates (VN Boards was the closest thing, and searching on it was horrible).  Once I stopped playing the game, I didn't have much interest in keeping the site up to date, but as people were actively using it, I just left it on my servers.
+	</p>
+	<p>
+		In September of 2012 I took a look at the site, and was pretty embarrassed by what had become of it.  It was littered with spam, and being one of the first websites I had created, it had a lot of flaws.  Needless to say I wasn't happy to see my name associated with it.  I took a few days with the intent of cleaning up the spam, and rewriting the site to improve and simplify things.
+	</p>
+	<p>
+		I really have no clue how many people still play the game, but while there's still traffic to the site, I'll keep it around.  Feel free to leave comments and feedback below.
+	</p>
+
+	<hr>
+	
+	<div id="disqus_thread"></div>
+	<script type='text/javascript'>disqus_identifier='/about';disqus_url='http://www.daoctemplates.net/about';</script>
+	<script type="text/javascript">
+	var disqus_shortname = 'daoctemplates';
+	(function() {
+		var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+		dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+		(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+	})();
+	</script>
+	<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+	<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+{% endblock %}

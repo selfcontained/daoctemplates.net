@@ -1,0 +1,43 @@
+{% extends '_layouts/main.twig' %}
+
+{% block title %}{{ template.className }} Template by {{ template.userName }} ({{ template.id }}){% endblock %}
+
+{% block main %}
+
+	{% if template.canEdit %}
+		<a href="/template/delete/{{ template.id }}" class="btn btn-inverse pull-right" style="margin-left:5px;"><i class="icon-trash icon-white"></i> Delete</a>
+		<a href="/template/edit/{{ template.id }}" class="btn btn-inverse pull-right" ><i class="icon-pencil icon-white"></i> Edit</a>
+	{% endif %}
+
+	<h3>{{ template.className }} Template by {{ template.userName }} <small>submitted on {{ template.created|date('M d, Y') }}</small></h3>
+
+	<div class="input-prepend">
+		<span class="add-on" style="width:50px;">Level</span><input class="span2" type="text" value="{{ template.level }}" disabled >
+	</div>
+
+	<div class="input-prepend">
+		<span class="add-on" style="width:50px;">Server</span><input class="span2" type="text" value="{{ template.serverName }}" disabled >
+	</div>
+
+	<hr>
+
+	<blockquote>{{ template.description }}<small>{{ template.userName }}</small></blockquote>
+
+	<pre style="height: 325px;overflow-y:auto">{{ template.text }}</pre>
+
+	<hr>
+	
+	<div id="disqus_thread"></div>
+	<script type='text/javascript'>disqus_identifier='/template/{{ template.id }}';disqus_url='http://www.daoctemplates.net/template/{{ template.id }}';</script>
+	<script type="text/javascript">
+	var disqus_shortname = 'daoctemplates';
+	(function() {
+		var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+		dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+		(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+	})();
+	</script>
+	<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+	<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+{% endblock %}

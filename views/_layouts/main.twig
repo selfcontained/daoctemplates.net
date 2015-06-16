@@ -1,0 +1,157 @@
+<!doctype html>
+<!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js ie8 oldie" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+	<title>{% block title '' %} - daoctemplates.net</title>
+	<meta name="description" content="Template Database for Dark Age of Camelot (DAOC).  Browse, share and comment on templates.">
+	<meta name="keywords" content="daoc, templates, albion, midgard, hibernia, armsman, cabalist, cleric, friar, heretic, infiltrator, mercenary, minstrel, necromancer, paladin, reaver, scout, sorcerer, theurgist, wizard, animist, bard, bainshee, blademaster, champion, druid, eldritch, enchanter, hero, mentalist, nightshade, ranger, valewalker, vampiir, warden, berserker, bonedancer, healer, hunter, runemaster, savage, shadowblade, shaman, skald, spiritmaster, thane, valkyrie, warlock, warrior, mauler">
+	<meta name="author" content="Brad Harris">
+
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+
+	<link rel="stylesheet" href="http://d2f5cjzm9p5z5u.cloudfront.net/css/combined.main.css">
+	<link rel="stylesheet" href="http://d2f5cjzm9p5z5u.cloudfront.net/bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" href="http://d2f5cjzm9p5z5u.cloudfront.net/bootstrap/css/bootstrap-responsive.min.css">
+</head>
+<body>
+
+<div class="container-fluid">
+
+	<div class="navbar navbar-inverse navbar-fixed-top">
+		<div class="navbar-inner">
+			<div class="container-fluid">
+				
+				<a class="brand" href="/">daoctemplates.net</a>
+			
+				<form action="{{ searchRoot ? searchRoot : '/' }}" class="navbar-search pull-left" method="GET">
+					<input type="text" name="query" class="search-query" placeholder="search for something..." value="{{ query }}" >
+				</form>
+
+				{% if currentUser %}
+
+					<ul class="nav">
+						<li class="divider-vertical"></li>
+						<li class="dropdown">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+							{{ currentUser.name }}
+							<b class="caret"></b>
+							</a>
+							<ul class="dropdown-menu">
+								<li><a href="/template/add">Add Template</a></li>
+								<li><a href="/user/{{ currentUser.id }}">My Templates</a></li>
+								<li><a href="/account">Update Password</a></li>
+								<li><a href="/logout">Logout</a></li>
+							</ul>
+						</li>
+						<li class="divider-vertical"></li>
+					</ul>
+
+				{% else %}
+					<form action="/login" method="POST" class="navbar-form pull-right">
+						<input name="username" type="text" class="input-small" placeholder="Username">
+						<input name="password" type="password" class="input-small" placeholder="Password">
+						<button type="submit" class="btn btn-primary">Login</button>
+						<a href="/account/new" class="btn btn-inverse">Sign Up</a>
+					</form>
+				{% endif %}
+
+			</div>
+		</div>
+	</div>
+
+	<div class="container-fluid">
+
+		<div class="row-fluid">
+			<div class="span2" id="sidebar">
+
+				{% include "_layouts/sidebar.twig" %}
+
+				<script type="text/javascript"><!--
+				google_ad_client = "ca-pub-5533514706346510";
+				/* daoctemplates left */
+				google_ad_slot = "1673737410";
+				google_ad_width = 160;
+				google_ad_height = 90;
+				//-->
+				</script>
+				<script type="text/javascript"
+				src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+				</script>
+
+			</div>
+
+			<div class="span10" role="main">
+				
+				<script type="text/javascript"><!--
+				google_ad_client = "ca-pub-5533514706346510";
+				/* daoctemplates top */
+				google_ad_slot = "9520625701";
+				google_ad_width = 728;
+				google_ad_height = 90;
+				//-->
+				</script>
+				<script type="text/javascript"
+				src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+				</script>
+
+				{% if error %}
+					<div class="alert alert-error">
+						<button type="button" class="close" data-dismiss="alert">×</button>
+						<h4>epicfail</h4>
+  						{% autoescape false %}{{ error }}{% endautoescape %}
+					</div>
+				{% endif %}
+				{% if message %}
+					<div class="alert alert-success">
+						<button type="button" class="close" data-dismiss="alert">×</button>
+						<h4>epicwin</h4>
+  						{% autoescape false %}{{ message }}{% endautoescape %}
+					</div>
+				{% endif %}
+				{% block main %}{% endblock %}
+			</div>
+		</div>
+
+	</div>
+
+	<hr>
+
+	<footer>
+		&copy; 2012 daoctemplates.net | 
+		<a href="/about">about</a> | 
+		<a href="http://www.postcount.net/">postcount</a> |
+		created by <a href="http://selfcontained.us">selfcontained.us</a>
+	</footer>
+</div>
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script src="http://d2f5cjzm9p5z5u.cloudfront.net/bootstrap/js/bootstrap.min.js"></script>
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-254292-1']);
+  _gaq.push(['_setSiteSpeedSampleRate', 50]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+
+<!--[if lt IE 7 ]>
+	<script src="//ajax.googleapis.com/ajax/libs/chrome-frame/1.0.2/CFInstall.min.js"></script>
+	<script>window.attachEvent("onload",function(){CFInstall.check({mode:"overlay"})})</script>
+<![endif]-->
+
+</body>
+</html>

@@ -1,0 +1,7 @@
+<ul class="nav nav-pills">
+	<li {% if serverType == 'all' %}class="active"{% endif %}><a href="{{ prefix }}">All</a></li>
+	<li {% if serverType == 'toa' %}class="active"{% endif %}><a href="{{ prefix }}toa">ToA</a></li>
+	<li {% if serverType == 'classic' %}class="active"{% endif %}><a href="{{ prefix }}classic">Classic</a></li>
+	<li {% if serverType == 'pvp' %}class="active"{% endif %}><a href="{{ prefix }}pvp">PvP</a></li>
+	<li {% if serverType == 'coop' %}class="active"{% endif %}><a href="{{ prefix }}coop">Coop</a></li>
+</ul>
