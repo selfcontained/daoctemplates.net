@@ -24,7 +24,7 @@ class Less extends Base {
 			apc_store($cacheKey, $data);
 		}
 
-		header('Expires: '.gmdate('D, d M Y H:i:s \G\M\T', strtotime("now + 1 year")));
+		header('Expires: '.gmdate('D, d M Y H:i:s \G\M\T', strtotime("now + 2 months")));
 		header('Content-Type: text/css');
 		echo $data['contents'];
 
